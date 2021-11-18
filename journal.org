@@ -1,3 +1,10 @@
-AUTHORS:
-Bah Fatoumata [bah06fatoumata@gmail.com]
-Galib Ali Yahya [yahyagalib47@gmail.com]
+* Auteurs:
+
+[[mailto:bah06fatoumata@gmail.com][Bah Fatoumata]] 
+
+[[mailto:yahyagalib47@gmail.com][Galib Ali Yahya]] 
+
+* Projet:
+
+Nao Robot collecteur de dechets
+
