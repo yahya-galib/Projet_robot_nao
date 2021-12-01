@@ -1,17 +1,20 @@
-<<<<<<< HEAD
 * Auteurs:
 
-[[mailto:bah06fatoumata@gmail.com][Bah Fatoumata]] 
+[[mailto:bah06fatoumata@gmail.com][Bah Fatoumata]]
 
-[[mailto:yahyagalib47@gmail.com][Galib Ali Yahya]] 
+[[mailto:yahyagalib47@gmail.com][Galib Ali Yahya]]
 
 * Projet:
 
 Nao Robot collecteur de dechets
 
-=======
 <18/11/2021>
 * Projet Nao collecteur de déchêts
 * TODO : se documenter sur le NAO et son API
   essayer d'utiliser le simulateur
->>>>>>> 77e0b5c (séance 18/11/2021)
+
+<01/12/2021>
+* installation de choregraphe
+* TODO :
+  - identifier les API utiles
+  - expérimenter avec elles. par exemple pour le déplacement
