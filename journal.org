@@ -18,3 +18,11 @@ Nao Robot collecteur de dechets
 * TODO :
   - identifier les API utiles
   - expérimenter avec elles. par exemple pour le déplacement
+
+<08/02/2022>
+* FAIT :
+  - déplacement sur choregraphe (pas webots)
+* TODO :
+  - trouver comment faire fonctionner la lib almath
+  - se documenter sur la reconnaissance d'objets en python
+  - regarder openCV
