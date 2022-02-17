@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+
+%% This package is necessary to use \includegraphics.
+\usepackage{graphicx}
+
+%% This package is necessary to define hyperlinks.
+\usepackage{hyperref}
+
+%% These packages are necessary to include code.
+\usepackage{listings}
+\usepackage{minted} % colored
+
+%% This package is needed to enchance mathematical formulas.
+\usepackage{amsmath}
+
+
+
+% This is a comment line in latex
+
+% Latex allows you to define your own "commands",
+% better known as "macros" in the Latex world.
+% The following line is an example of such definition.
+\newcommand{\latex}{\LaTeX}
+
+
+% The next lines contain some meta informations about this document.
+
+\title{Rapport Intermédiaire du projet long\\}
+%\subtitle{A minimal demonstration of \latex}
+
+\author{GALIB ALI Yahya && BAH Fatoumata}
+
+
+%% Here we begin giving the actual content o the document.
+\begin{document}
+\maketitle
+\selectlanguage{french}
+\section{Introduction}
+Notre projet consiste à réaliser un programme qui permet au robot NAO de rechercher, collecter et mettre les déchets dans la poubelle.\\
+Nos objectifs se décomposent en 2 parties principales:
+\begin{enumerate}
+   \item Déplacement
+   \begin{itemize}
+     \item Déplacement autonome en évitant les obstacles.
+     \item Détection et déplacement vers le déchet.
+   \end{itemize}
+   \item Recherche 
+   \begin{itemize}
+       \item Recherche de déchet.
+       \item Recherche de la poubelle.
+   \end{itemize}
+\end{enumerate}
+Pour pouvoir réaliser ce travail, nous n'avons pas eu des contraintes de réalisations spécifiques. Voici les outils que nous avons utilisés:
+ \begin{itemize}
+       \item Python2.7
+       \item Python\_SDK\_Naoqi
+       \item IDE Pycharm
+       \item Choregraphe
+       \item Simulateur webots pour tester le programme
+   \end{itemize}
+\section{Travail effectué}
+Nous avons commencé par notre premier objectif du projet qui est le déplacement autonome du robot. C'est une partie clé qui nous a permis de se familiariser et de s'auto-former sur le robot. Dans cette partie le robot NAO peut effectuer différents comportements:\\
+ \begin{itemize}
+       \item Se déplacer à n'importe quelle distance souhaitée.
+       \item Changer de posture (s'accroupir, s'allonger, s'assoir)
+       \item Parler et dire des phrases.
+       \item Tourner sa tête (nécessaire pour la recherche des déchets).
+   \end{itemize}
+   \section{Difficultés rencontrées}
+   Les difficultés qu'on a rencontré sont liées à la spécificité du projet. En effet, nous travaillons sur un robot totalement inconnu de tous les membres du groupe. En plus à cause du coût élevé du robot il n'y a pas beaucoup des gens qui travaillent sur lui à travers le monde. Sa documentation non détaillée est uniquement disponible sur le site du fabricant du robot. Nous sommes passés par une phase d'auto-formation pour nous familiariser avec le robot ce qui nous a pris un mois.
+   Nous avons également rencontrés des difficultés liées aux outils et librairies utilisées pour communiquer avec le robot:
+    \begin{itemize}
+       \item    Au début nous avons decidé de travailler sur webots qui permet de lancer un NAO simulé se déplaçant dans un monde virtuel pour tester les comportements avant de les jouer sur un vrai robot.
+   Malheureusement ce logiciel est devenu obsolet car il n’est plus
+   entretenue par Aldebaran / SoftBank Robotics. Ce qui fait qu’il peut ou pas marcher.
+       \item Nous avons également rencontré un problème lié à une librairie Al math qui fournit  l'accès aux fonctions mathématiques. Mais enfin nous avons réussi à l'intégrer dans notre projet.
+       \item Pour la sécurité du robot, NAO detecte les obstacles qui sont devant lui et s'arrête à une certaine distance de l'obstacle pour éviter qu'il heurte l'obstacle. Nous avons rencontré des difficultés à l'arrêter juste avant pour pouvoir contourner l'obstacle et continuer de se déplacer car il continuait à se déplacer vers l'obstacle même après l'avoir heurter. Mais enfin après plusieurs essaies nous avons enfin réussi.
+   \end{itemize}
+   
+   \section{Future Implémentation }
+   Dans les prochains jours, nous avons planifié d'avancer sur le projet et finir les objectifs qu'on s'est fixé. Nous souhaiterons ameliorer et ajouter les comportements nécessaires pour atteindre l'objectif du projet à savoir:
+    \begin{itemize}
+       \item la détection des déchets.
+       \item le déplacement vers le déchet.
+       \item la recherche de la poubelle.
+       \item Rendre le programme installable par défaut sur le robot.
+   \end{itemize}
+
+\end{document}
