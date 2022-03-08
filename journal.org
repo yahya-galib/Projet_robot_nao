@@ -26,3 +26,11 @@ Nao Robot collecteur de dechets
   - trouver comment faire fonctionner la lib almath
   - se documenter sur la reconnaissance d'objets en python
   - regarder openCV
+
+<08/03/2022>
+- FAIT : déplacement. arrêt lors d'une collision
+- difficile d'utiliser image AI (version de python)
+- TODO :
+  - essayer ALvisionrecognition
+  - ou utiliser openCV pour reconnaitre une bouteille par sa forme et sa taille,
+    etc.
