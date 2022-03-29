@@ -34,3 +34,9 @@ Nao Robot collecteur de dechets
   - essayer ALvisionrecognition
   - ou utiliser openCV pour reconnaitre une bouteille par sa forme et sa taille,
     etc.
+<29/03/2022>
+- TODO
+  * identifier les images/annotations manquantes dans la base d'apprentissage
+  * essayer de faire tourner l'apprentissage sur une autre machine (CPU
+    seulement) -> combien de temps ça prend ?
+  * on essayera d'utiliser odette si ça prend trop de temps
