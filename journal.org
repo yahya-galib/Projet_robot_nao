@@ -40,3 +40,12 @@ Nao Robot collecteur de dechets
   * essayer de faire tourner l'apprentissage sur une autre machine (CPU
     seulement) -> combien de temps ça prend ?
   * on essayera d'utiliser odette si ça prend trop de temps
+
+<05/04/2022>
+* FAIT:
+  - début d'implémentation de la detection d'objet 
+  - déplacement vers un objet, saisir un objet
+* TODO:
+  - reprendre la detection avec toutes les images de la base
+  - essayer de comprendre la sortie de l'entrainement du modèle de detection (bouteille et poubelle) 
+  - peut-être penser à entrainer le modèle sur une base plus grande
