@@ -1,5 +1,3 @@
-import motion
-
 class Postures:
     def __init__(self, session):
         self.motion = session.service("ALMotion")
