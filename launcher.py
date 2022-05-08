@@ -10,6 +10,7 @@ from ArmsMouvements.ArmsStiffness import ArmsStiffness
 from Deplacements.Movement import Movement
 
 parser = argparse.ArgumentParser()
+# 172.20.10.12
 parser.add_argument("--ip", type=str, default="172.20.10.12",
                     help="Robot IP address. On robot or Local Naoqi: use '127.0.0.1'.")
 parser.add_argument("--port", type=int, default=9559,
@@ -28,62 +29,25 @@ except RuntimeError:
     #sys.exit(1)
 
 app.start()
-
-# print("hello")
+session = app.session
+posture_service = session.service("ALRobotPosture")
 movement = Movement(app)
-# movement.obstacleAvoidance(2)
-#searchBottle = NaoMarkDetection(app)
-#searchBottle.on_searchNaoMark(64)
-#time.sleep(3)
-#searchBottle.on_searchNaoMark(68)
+# creation d'un objet de la classe NaoMarkDetection qui decrit le comportement du robot pour chercher les dechets
+searchTrash = NaoMarkDetection(app)
+searchTrash.on_searchNaoMark(84)
+
+# ArmsStiffness est la classe qui décrit les mouvements des articulations
 arms = ArmsStiffness(app)
 arms.Accroupissement()
 arms.standUp()
-movement.moveTo(0.0,0.0,math.pi/2)
 
+searchTrashCan = NaoMarkDetection(app)
+searchTrashCan.on_searchNaoMark(80)
+if searchTrashCan.findTrash:
+    arms.jeterDansLaPoubelle()
 
-
-
-#movement = Movement(app)
-#movement.moveTo(1, 0, 0)
-#if searchBottle.findBottle == True:
-    #arms.Accroupissement()
-"""
-while not findBottle:
-    searchBottle.on_searchNaoMark()
-    findBottle = searchBottle.find
-    if not searchBottle.find:
-        tts.say("Not find")
-        time.sleep(2)
-        movement.obstacleAvoidance()
-
-print "cible trouver"
-time.sleep(2)
-theta = math.atan(searchBottle.y/searchBottle.x)
-movement.moveTo(1.4*searchBottle.x, searchBottle.y, -theta)
-
-arms.Accroupissement()
-arms.ramasser()
-
-searchPoubelle = NaoMarkDetection(app)
-findPoubelle = False
-
-while not findPoubelle:
-    searchPoubelle.on_searchNaoMark()
-    findPoubelle = searchPoubelle.find
-    if not searchBottle.find:
-        tts.say("Not find I am going ahead")
-        time.sleep(2)
-        movement.obstacleAvoidance()
-
-theta = math.atan(searchPoubelle.y/searchPoubelle.x)
-movement.moveTo(1.4*searchPoubelle.x, searchPoubelle.y, -theta)
-
-arms.jetterDansLaPoubelle()
-"""
-
-
-#sys.exit(100)
+else:
+    posture_service.goToPosture("Crouch", 0.8)
 
 
 

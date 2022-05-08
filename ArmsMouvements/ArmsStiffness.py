@@ -1,7 +1,5 @@
 import time
 
-
-
 class ArmsStiffness:
 
     def __init__(self, app):
@@ -9,12 +7,14 @@ class ArmsStiffness:
         session = app.session
         self.motion_service = session.service("ALMotion")
         self.posture_service = session.service("ALRobotPosture")
+        self.tts = session.service("ALTextToSpeech")
 
     def fixerMainDroite(self):
 
         names = list()
         times = list()
         keys = list()
+
         names.append("RShoulderRoll")
         times.append([1.00000])
         keys.append([-0.006981])
@@ -44,6 +44,7 @@ class ArmsStiffness:
         names = list()
         times = list()
         keys = list()
+
         names.append("RShoulderRoll")
         times.append([1.00000])
         keys.append([-0.006981])
@@ -61,14 +62,16 @@ class ArmsStiffness:
         keys.append([-1.312488])
         names.append("RHand")
         times.append([1.00000])
-        keys.append([1.000000])
+        keys.append([0.000000])
 
         try:
             self.motion_service.angleInterpolation(names, keys, times, True)
         except BaseException as err:
             pass
+        self.motion_service.openHand("RHand")
 
     def ramasser(self):
+
         noms = list()
         temps = list()
         cle = list()
@@ -112,103 +115,82 @@ class ArmsStiffness:
         b = list()
         c = list()
 
+        a.append("RShoulderRoll")
+        b.append([1.00000])
+        c.append([-0.8063421])
+
         noms.append("RShoulderRoll")
         temps.append([1.00000])
-        cle.append([-0.2216568])
+        cle.append([0.3141592])
         noms.append("RShoulderPitch")
         temps.append([1.00000])
-        cle.append([0.9948376])
+        cle.append([1.0908307])
         noms.append("RElbowRoll")
         temps.append([1.00000])
-        cle.append([1.0070549])
+        cle.append([0.9948376])
         noms.append("RElbowYaw")
         temps.append([1.00000])
-        cle.append([1.5393804])
+        cle.append([1.5009831])
         noms.append("RWristYaw")
         temps.append([1.00000])
-        cle.append([0.1396263])
-
-        noms.append("LShoulderRoll")
+        cle.append([-0.3804817])
+        noms.append("RHand")
         temps.append([1.00000])
-        cle.append([0.2216568])
-        noms.append("LShoulderPitch")
-        temps.append([1.00000])
-        cle.append([0.9948376])
-        noms.append("LElbowRoll")
-        temps.append([1.00000])
-        cle.append([-1.0070549])
-        noms.append("LElbowYaw")
-        temps.append([1.00000])
-        cle.append([-1.5393804])
-        noms.append("LWristYaw")
-        temps.append([1.00000])
-        cle.append([-0.1396263])
+        cle.append([0.000000])
+        self.motion_service.openHand("RHand")
         try:
             self.motion_service.angleInterpolation(noms, cle, temps, True)
         except BaseException:
             pass
-
-
-        self.motion_service.openHand("RHand")
-        self.motion_service.openHand("LHand")
-
-        a.append("RShoulderRoll")
-        b.append([1.00000])
-        c.append([0.2199114])
-        a.append("LShoulderRoll")
-        b.append([1.00000])
-        c.append([-0.2199114])
-        try:
-            self.motion_service.angleInterpolation(a, c, b, True)
-        except BaseException:
-            pass
-        self.motion_service.closeHand("RHand")
-        self.motion_service.closeHand("LHand")
+        self.motion_service.setMoveArmsEnabled(True, False)
 
     def standUp(self):
-        names = list()
-        times = list()
-        keys = list()
+        nom = list()
+        temps = list()
+        cle = list()
+        self.motion_service.closeHand("RHand")
+        nom.append("RHand")
+        temps.append([1.00000])
+        cle.append([0.0000000])
+        nom.append("LHipYawPitch")
+        temps.append([1.00000])
+        cle.append([-0.170010])
+        nom.append("LHipRoll")
+        temps.append([1.00000])
+        cle.append([0.119108])
+        nom.append("LHipPitch")
+        temps.append([1.00000])
+        cle.append([0.127419])
+        nom.append("LKneePitch")
+        temps.append([1.00000])
+        cle.append([-0.092328])
+        nom.append("LAnklePitch")
+        temps.append([1.00000])
+        cle.append([0.087419])
+        nom.append("LAnkleRoll")
+        temps.append([1.00000])
+        cle.append([-0.110793])
 
-        names.append("LHipYawPitch")
-        times.append([1.00000])
-        keys.append([-0.170010])
-        names.append("LHipRoll")
-        times.append([1.00000])
-        keys.append([0.119108])
-        names.append("LHipPitch")
-        times.append([1.00000])
-        keys.append([0.127419])
-        names.append("LKneePitch")
-        times.append([1.00000])
-        keys.append([-0.092328])
-        names.append("LAnklePitch")
-        times.append([1.00000])
-        keys.append([0.087419])
-        names.append("LAnkleRoll")
-        times.append([1.00000])
-        keys.append([-0.110793])
-
-        names.append("RHipYawPitch")
-        times.append([1.00000])
-        keys.append([-0.170010])
-        names.append("RHipRoll")
-        times.append([1.00000])
-        keys.append([-0.119102])
-        names.append("RHipPitch")
-        times.append([1.00000])
-        keys.append([0.127419])
-        names.append("RKneePitch")
-        times.append([1.00000])
-        keys.append([-0.092328])
-        names.append("RAnklePitch")
-        times.append([1.00000])
-        keys.append([0.087419])
-        names.append("RAnkleRoll")
-        times.append([1.00000])
-        keys.append([0.110793])
-
+        nom.append("RHipYawPitch")
+        temps.append([1.00000])
+        cle.append([-0.170010])
+        nom.append("RHipRoll")
+        temps.append([1.00000])
+        cle.append([-0.119102])
+        nom.append("RHipPitch")
+        temps.append([1.00000])
+        cle.append([0.127419])
+        nom.append("RKneePitch")
+        temps.append([1.00000])
+        cle.append([-0.092328])
+        nom.append("RAnklePitch")
+        temps.append([1.00000])
+        cle.append([0.087419])
+        nom.append("RAnkleRoll")
+        temps.append([1.00000])
+        cle.append([0.110793])
         try:
-            self.motion_service.angleInterpolation(names, keys, times, True)
+            self.motion_service.angleInterpolation(nom, cle, temps, True)
         except BaseException:
-            pass
+             pass
+        self.tts.say("Looking for a trash can")
